@@ -1,21 +1,26 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "CustomActor.h"
+#include "Kismet/KismetMathLibrary.h"
 
 // Sets default values
 ACustomActor::ACustomActor() {
 	StartingPosition = { 0.f, 0.f, 0.f};
-	NumberOfVertices = 0;	
+	NumberOfVertices = 0;  
 }
 
-// Called when the game starts or when spawned
 void ACustomActor::BeginPlay() {
 
 	Super::BeginPlay();
 
-	ExtractNumberOfVertices();
+  // get number of vertices from this actor's static mesh
+  ExtractNumberOfVertices();	
+
+  // log number of vertices
+  UE_LOG(LogTemp, Warning, TEXT("%s number of vertices: %d"), *this->GetName(), NumberOfVertices);	
 	
 	StartingPosition = GetActorLocation();
+
 }
 
 void ACustomActor::ExtractNumberOfVertices() {

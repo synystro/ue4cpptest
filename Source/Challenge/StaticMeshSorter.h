@@ -28,6 +28,8 @@ void Reset();
 
   int Partition(TArray<int>&, int s, int e);
 
+  FVector StartingPosition;
+  FVector OffsetPosition;
   TMap<ACustomActor*, int> ActorVertexMap;
   TMap<FVector, bool> PositionMap;
   TArray<ACustomActor*> FoundCustomActors;

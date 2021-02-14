@@ -7,6 +7,8 @@
 
 
 AStaticMeshSorter::AStaticMeshSorter() {
+  StartingPosition = {0.f,0.f,0.f};
+  OffsetPosition = {0.f, -300.f, 0.f};
   FindMovableActorsOnLevel();
   HUDClass = AGameHUD::StaticClass();
 }
@@ -18,54 +20,44 @@ void AStaticMeshSorter::BeginPlay() {
          FoundCustomActors.Num());
 
   if (FoundCustomActors.Num() > 0) {
-    for (auto& Elem : FoundCustomActors) {
-      VertexValues.Add(Elem->GetTotalVertices());
-      PositionMap.Add(Elem->GetStartingPosition(), false);
-
-      ActorVertexMap.Add(Elem, Elem->GetTotalVertices());
-      //UE_LOG(LogTemp, Warning, TEXT("%s's number of vertices: %d"), *Elem->GetName(), Elem->GetTotalVertices());
+    for (auto& CustomActor : FoundCustomActors) {
+      VertexValues.Add(CustomActor->GetTotalVertices());
+      ActorVertexMap.Add(CustomActor, CustomActor->GetTotalVertices());
     }
 
-    // sort vertices
+    // sort vertices by value
     QuickSort(VertexValues, 0, VertexValues.Num() - 1);
 
-    // sort position's based on Y axis
-    TArray<int> yPositions;
-    for (auto& pos : PositionMap) yPositions.Add(pos.Key.Y);
-    QuickSort(yPositions, 0, PositionMap.Num() - 1);
+    // create a position map
+    for(int i = 0; i < FoundCustomActors.Num(); i++) {      
+      PositionMap.Add(StartingPosition + (OffsetPosition * i), false);
+    }
 
-    int i = 0;
-    for (auto& pos : PositionMap) {
-      pos.Key.Y = yPositions[i];
-      i++;
-    }   
-    // sort actors on begin play
+    // (auto) sort actors on begin play
     //Sort();
   }
+
 }
 
 void AStaticMeshSorter::Sort() {
-  // generate positions array and reverse it
+  // extract positions to an array for later comparison
   TArray<FVector> worldPositions;
   PositionMap.GenerateKeyArray(worldPositions);
-  Algo::Reverse(worldPositions); 
-  // loop through all actors and sort them by their sorted vertex when they match
+  // loop through all actors and sort them by vertex when a NumberOfVertices match is found
   for (auto& ActorVertexPair : ActorVertexMap) {
     bool repositioned = false;
     for (int i = 0; i < VertexValues.Num(); i++) {
-      // if custom actor repositioned, break to loop the next custom actor
-      if (repositioned) break;
+      if(repositioned) break;
       // if custom actor's number of vertices matches i's vertices value
       if (ActorVertexPair.Value == VertexValues[i]) {
-        for (auto& PositionPair : PositionMap) {
-          if (PositionPair.Key == worldPositions[i] && PositionPair.Value == false) {
+        for(auto& PositionPair : PositionMap) {
+          if(PositionPair.Key == worldPositions[i] && PositionPair.Value == false) {
             ActorVertexPair.Key->SetActorLocation(PositionPair.Key);
             PositionPair.Value = true;
-            repositioned = true;            
+            repositioned = true;
             break;
           }
         }
-        continue;
       }
     }
   }
