@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "name": "ChallengeEditor Editor Win64 Development (Challenge)",
+            "intelliSenseMode": "msvc-x64",
+            "compileCommands": "C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge.json",
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

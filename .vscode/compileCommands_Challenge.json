@@ -1,0 +1,47 @@
+[
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\Challenge.Build.cs",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\Challenge.cpp",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\Challenge.h",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\ChallengeGameModeBase.cpp",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\ChallengeGameModeBase.h",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\CustomActor.cpp",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\CustomActor.h",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\StaticMeshSorter.cpp",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\StaticMeshSorter.h",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	}
+]
