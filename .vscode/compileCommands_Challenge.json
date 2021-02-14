@@ -35,6 +35,26 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
 	},
 	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\GameHUD.cpp",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\GameHUD.h",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\SGameWidget.cpp",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
+		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\SGameWidget.h",
+		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
+		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"
+	},
+	{
 		"file": "C:\\\\Users\\\\Lvcifer\\\\Documents\\\\Unreal Projects\\\\Challenge\\\\Source\\\\Challenge\\\\StaticMeshSorter.cpp",
 		"command": "cl.exe @\"C:\\Users\\Lvcifer\\Documents\\Unreal Projects\\Challenge\\.vscode\\compileCommands_Challenge\\Challenge.182.rsp\"",
 		"directory": "C:\\Program Files\\Epic Games\\UE_4.26\\Engine\\Source"

@@ -1,20 +1,20 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "StaticMeshSorter.h"
-
 #include "Algo/Reverse.h"
+#include "GameHUD.h"
 #include "Kismet/GameplayStatics.h"
 
+
 AStaticMeshSorter::AStaticMeshSorter() {
-  // SortStartPosition = {0.f,0.f,0.f};
-  // SortSideOffset = {0.f, 100.f, 0.f};
   FindMovableActorsOnLevel();
+  HUDClass = AGameHUD::StaticClass();
 }
 
 void AStaticMeshSorter::BeginPlay() {
   Super::BeginPlay();
 
-  UE_LOG(LogTemp, Warning, TEXT("Found custom movable actors: %d"),
+  UE_LOG(LogTemp, Warning, TEXT("Total found custom movable actors: %d"),
          FoundCustomActors.Num());
 
   if (FoundCustomActors.Num() > 0) {
@@ -23,8 +23,7 @@ void AStaticMeshSorter::BeginPlay() {
       PositionMap.Add(Elem->GetStartingPosition(), false);
 
       ActorVertexMap.Add(Elem, Elem->GetTotalVertices());
-      UE_LOG(LogTemp, Warning, TEXT("%s's vertices %d"), *Elem->GetName(),
-             Elem->GetTotalVertices());
+      //UE_LOG(LogTemp, Warning, TEXT("%s's number of vertices: %d"), *Elem->GetName(), Elem->GetTotalVertices());
     }
 
     // sort vertices
@@ -39,32 +38,47 @@ void AStaticMeshSorter::BeginPlay() {
     for (auto& pos : PositionMap) {
       pos.Key.Y = yPositions[i];
       i++;
-    }
+    }   
+    // sort actors on begin play
+    //Sort();
+  }
+}
 
-    // generate positions array and reverse it
-    TArray<FVector> worldPositions;
-    PositionMap.GenerateKeyArray(worldPositions);
-    Algo::Reverse(worldPositions);
-
-    // sort actors
-
-    for (auto& Elem : ActorVertexMap) {
-      bool repositioned = false;
-      for (int j = 0; j < VertexValues.Num(); j++) {
-        if (repositioned) break;
-        if (Elem.Value == VertexValues[j]) {
-          for (auto& Elem2 : PositionMap) {
-            if (Elem2.Key == worldPositions[j] && Elem2.Value == false) {
-              Elem.Key->SetActorLocation(Elem2.Key);
-              Elem2.Value = true;
-              repositioned = true;
-              break;
-            }
+void AStaticMeshSorter::Sort() {
+  // generate positions array and reverse it
+  TArray<FVector> worldPositions;
+  PositionMap.GenerateKeyArray(worldPositions);
+  Algo::Reverse(worldPositions); 
+  // loop through all actors and sort them by their sorted vertex when they match
+  for (auto& ActorVertexPair : ActorVertexMap) {
+    bool repositioned = false;
+    for (int i = 0; i < VertexValues.Num(); i++) {
+      // if custom actor repositioned, break to loop the next custom actor
+      if (repositioned) break;
+      // if custom actor's number of vertices matches i's vertices value
+      if (ActorVertexPair.Value == VertexValues[i]) {
+        for (auto& PositionPair : PositionMap) {
+          if (PositionPair.Key == worldPositions[i] && PositionPair.Value == false) {
+            ActorVertexPair.Key->SetActorLocation(PositionPair.Key);
+            PositionPair.Value = true;
+            repositioned = true;            
+            break;
           }
-          continue;
         }
+        continue;
       }
     }
+  }
+}
+
+void AStaticMeshSorter::Reset() {
+  // reset actor locations
+  for(auto& Elem : FoundCustomActors) {
+    Elem->SetActorLocation(Elem->GetStartingPosition());
+  }
+  // reset location occupied
+  for(auto& Elem : PositionMap) {
+    Elem.Value = false;
   }
 }
 

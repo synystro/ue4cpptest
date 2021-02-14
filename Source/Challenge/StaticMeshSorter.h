@@ -11,6 +11,10 @@ UCLASS()
 class CHALLENGE_API AStaticMeshSorter : public AGameModeBase {
   GENERATED_BODY()
 
+public:
+void Sort();
+void Reset();
+
  protected:
   AStaticMeshSorter();
 
