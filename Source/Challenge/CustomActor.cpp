@@ -1,26 +1,44 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "CustomActor.h"
+
 #include "Kismet/KismetMathLibrary.h"
+
 
 // Sets default values
 ACustomActor::ACustomActor() {
-	StartingPosition = { 0.f, 0.f, 0.f};
-	NumberOfVertices = 0;  
+  PrimaryActorTick.bCanEverTick = true;
+
+  StartingPosition = {0.f, 0.f, 0.f};
+  NumberOfVertices = 0;
 }
 
 void ACustomActor::BeginPlay() {
+  Super::BeginPlay();
 
-	Super::BeginPlay();
+  SetActorTickEnabled(false);
 
   // get number of vertices from this actor's static mesh
-  ExtractNumberOfVertices();	
+  ExtractNumberOfVertices();
 
   // log number of vertices
-  UE_LOG(LogTemp, Warning, TEXT("%s number of vertices: %d"), *this->GetName(), NumberOfVertices);	
-	
-	StartingPosition = GetActorLocation();
+  //UE_LOG(LogTemp, Warning, TEXT("%s number of vertices: %d"), *this->GetName(), NumberOfVertices);
 
+  StartingPosition = GetActorLocation();
+}
+
+void ACustomActor::Tick(float DeltaTime) {
+  Super::Tick(DeltaTime);
+  // lerp
+  if (LerpTime < LerpDuration) {
+    LerpTime += DeltaTime;
+    FVector newPos =
+        FMath::Lerp(LerpStartPosition, TargetPosition, LerpTime / LerpDuration);
+    this->SetActorLocation(newPos);
+  } else {
+    // once lerping is done, disable actor ticking for optimisation
+    SetActorTickEnabled(false);
+  }
 }
 
 void ACustomActor::ExtractNumberOfVertices() {
@@ -46,6 +64,6 @@ void ACustomActor::ExtractNumberOfVertices() {
 
   } else {
     UE_LOG(LogTemp, Warning, TEXT("Actor %s has no static mesh component!"),
-    *this->GetName());
+           *this->GetName());
   }
 }

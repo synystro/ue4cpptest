@@ -13,16 +13,32 @@ class CHALLENGE_API ACustomActor : public AActor
 	
 public:	
 	ACustomActor();
-	FVector GetStartingPosition() { return StartingPosition; } ;
-	int GetTotalVertices() { return NumberOfVertices; } ;
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
+	
 	void ExtractNumberOfVertices();
 
 	FVector StartingPosition;
+	FVector TargetPosition;
 	int NumberOfVertices;
+
+	// lerp
+	FVector LerpStartPosition;
+	float LerpTime = 0.f;
+	const float LerpDuration = 1.f;
+
+public:
+	FVector GetStartingPosition() { return StartingPosition; } ;
+	void SetTargetPosition(FVector targetPosition) {
+		//TODO: put this in a delegate function later
+		LerpStartPosition = GetActorLocation();
+		LerpTime = 0.f;
+		TargetPosition = targetPosition;
+		//
+		SetActorTickEnabled(true);
+	};
+	int GetTotalVertices() { return NumberOfVertices; } ;
 
 };

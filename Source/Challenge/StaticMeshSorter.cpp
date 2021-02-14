@@ -52,7 +52,8 @@ void AStaticMeshSorter::Sort() {
       if (ActorVertexPair.Value == VertexValues[i]) {
         for(auto& PositionPair : PositionMap) {
           if(PositionPair.Key == worldPositions[i] && PositionPair.Value == false) {
-            ActorVertexPair.Key->SetActorLocation(PositionPair.Key);
+            //ActorVertexPair.Key->SetActorLocation(PositionPair.Key);
+            ActorVertexPair.Key->SetTargetPosition(PositionPair.Key);
             PositionPair.Value = true;
             repositioned = true;
             break;
@@ -66,7 +67,9 @@ void AStaticMeshSorter::Sort() {
 void AStaticMeshSorter::Reset() {
   // reset actor locations
   for(auto& Elem : FoundCustomActors) {
-    Elem->SetActorLocation(Elem->GetStartingPosition());
+    //Elem->SetActorLocation(Elem->GetStartingPosition());
+    Elem->SetTargetPosition(Elem->GetStartingPosition());
+    //UE_LOG(LogTemp, Warning, TEXT("RESET %s BACK TO %S"), *Elem->GetName(), *Elem->GetStartingPosition().ToString());
   }
   // reset location occupied
   for(auto& Elem : PositionMap) {
