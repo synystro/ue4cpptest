@@ -19,4 +19,5 @@ protected:
 	TSharedPtr<class SWidget> GameWidgetContainer;
 
 	virtual void BeginPlay() override;
+
 };

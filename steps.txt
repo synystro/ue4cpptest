@@ -1,0 +1,23 @@
+// 1 preparation (GameMode's BeginPlay)
+
+1.1 GameMode gathers all Custom Actors on the level (map) using UGameplayStatics::GetAllActorsOfClass
+
+1.2 If any CustomActor is found, create a TMap<ACustomActor*, int> of them with their static meshes' number of vertices
+
+1.3 With the number of vertices on a separate Tarray<int>, quicksort them
+
+1.4 Create an FVector PositionMap starting at "StartingPosition" and for each index offset the FVector position by "OffsetPosition"
+
+// 2 sorting
+
+2.1 Extract a TArray<Vector> from the PositionMap for later comporison (since maps don't have indexes)
+
+2.2 Loop through all actors and sort their position by number of vertices when they match with one of the sorted array of vertices elements
+
+// 3 resetting
+
+3.1 Simply loop through all Custom Actors and set their target position to be their StartingPosition
+
+// 4 UI
+
+4.1 Created a HUD and used Slate to create a CompoundWidget for the buttons

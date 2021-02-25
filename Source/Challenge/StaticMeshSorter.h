@@ -15,14 +15,18 @@ public:
 void Sort();
 void Reset();
 
+TArray<ACustomActor*> GetCustomActors() { return FoundCustomActors; } ;
+
  protected:
   AStaticMeshSorter();
 
   virtual void BeginPlay() override;
 
-  void FindMovableActorsOnLevel();
+  void FindMovableCustomActorsOnLevel();
 
-  bool CheckForStaticMeshOnActor(AActor* Actor);
+  void LogCustomActorVertices();
+
+  UStaticMeshComponent* GetStaticMeshOnActor(AActor* Actor);
 
   void QuickSort(TArray<int>&, int s, int e);
 

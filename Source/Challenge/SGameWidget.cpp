@@ -22,12 +22,6 @@ void SGameWidget::Construct(const FArguments& InArgs) {
 
     ChildSlot [
         SNew(SOverlay)
-        // + SOverlay::Slot()
-        // .HAlign(HAlign_Fill)
-        // .VAlign(VAlign_Fill) [
-        //     SNew(SImage)
-        //     .ColorAndOpacity(FColor::Black)
-        // ]
         + SOverlay::Slot()
         .HAlign(HAlign_Left)
         .VAlign(VAlign_Bottom)

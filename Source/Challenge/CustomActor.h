@@ -19,25 +19,25 @@ public:
 protected:
 	
 	void ExtractNumberOfVertices();
+	void OnSetTargetPosition();
 
 	FVector StartingPosition;
 	FVector TargetPosition;
 	int NumberOfVertices;
 
+	// UI
+	TSharedPtr<class SActorWidget> ActorWidget;
+
 	// lerp
 	FVector LerpStartPosition;
-	float LerpTime = 0.f;
+	float LerpTimer = 0.f;
 	const float LerpDuration = 1.f;
 
 public:
 	FVector GetStartingPosition() { return StartingPosition; } ;
 	void SetTargetPosition(FVector targetPosition) {
-		//TODO: put this in a delegate function later
-		LerpStartPosition = GetActorLocation();
-		LerpTime = 0.f;
 		TargetPosition = targetPosition;
-		//
-		SetActorTickEnabled(true);
+		OnSetTargetPosition();
 	};
 	int GetTotalVertices() { return NumberOfVertices; } ;
 

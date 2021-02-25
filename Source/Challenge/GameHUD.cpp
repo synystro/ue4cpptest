@@ -11,8 +11,8 @@ void AGameHUD::BeginPlay() {
     Super::BeginPlay();
 
     if(GEngine && GEngine->GameViewport) {
+        // add game widget
         GameWidget = SNew(SGameWidget).OwningHUD(this);
         GEngine->GameViewport->AddViewportWidgetContent(SAssignNew(GameWidgetContainer, SWeakWidget).PossiblyNullContent(GameWidget.ToSharedRef()));
     }
 }
-
